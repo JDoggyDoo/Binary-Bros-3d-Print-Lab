@@ -215,7 +215,116 @@
                 <!-- Injected dynamically via JS -->
             </div>
         </section>
+<!-- Custom Product / STL Request Section -->
+<section id="custom-order" class="py-16 bg-gray-900/80 border-t border-b border-cyan-500/20">
+  <div class="max-w-4xl mx-auto px-4">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-10">
+      <span class="bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs px-3 py-1 rounded-full font-semibold uppercase tracking-wider">
+        Custom STL & Prototyping
+      </span>
+      <h2 class="text-3xl font-black text-white mt-3">Got Your Own 3D Model?</h2>
+      <p class="text-gray-400 text-sm mt-2 max-w-lg mx-auto">
+        Have an STL file from Thingiverse, Printables, or your own CAD design? Upload the link and specs below for a custom quote from Binay Bros.
+      </p>
+    </div>
 
+    <!-- Custom Order Card -->
+    <div class="bg-gray-800/80 border border-cyan-500/20 rounded-3xl p-6 md:p-8 backdrop-blur shadow-2xl">
+      <form id="customPrintForm" class="space-y-6" onsubmit="generateCustomQuote(event)">
+        
+        <!-- Row 1: File Link & Project Name -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-bold text-gray-300 mb-2">Project / Item Name *</label>
+            <input type="text" required placeholder="e.g., Custom GPU Sag Bracket" 
+              class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-gray-300 mb-2">3D Model Link (STL / 3MF / STEP) *</label>
+            <input type="url" required placeholder="https://www.thingiverse.com/thing:..." 
+              class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition text-sm">
+            <span class="text-xs text-gray-500 mt-1 block">Google Drive, Thingiverse, Printables, or Cults3D link.</span>
+          </div>
+        </div>
+
+        <!-- Row 2: Material & Infill (Density) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label class="block text-sm font-bold text-gray-300 mb-2">Filament Material</label>
+            <select class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition text-sm">
+              <option value="PLA">PLA+ (Standard / Decorative)</option>
+              <option value="PETG">PETG (Durable / Heat Resistant)</option>
+              <option value="TPU">TPU (Flexible / Rubber-like)</option>
+              <option value="ABS">ABS / ASA (High Strength)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold text-gray-300 mb-2">Infill Density (Strength)</label>
+            <select class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition text-sm">
+              <option value="15%">15% - Light (Standard Display)</option>
+              <option value="30%">30% - Moderate (Functional Use)</option>
+              <option value="50%">50% - Strong (Heavy Duty Parts)</option>
+              <option value="100%">100% - Solid (Maximum Strength)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold text-gray-300 mb-2">Color Choice</label>
+            <input type="text" placeholder="e.g., Matte Black, Red, Dual-Color" 
+              class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition text-sm">
+          </div>
+        </div>
+
+        <!-- Row 3: Dimensions & Special Instructions -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <label class="block text-sm font-bold text-gray-300 mb-2">Estimated Size / Scale</label>
+            <input type="text" placeholder="e.g., 100% scale or 10cm x 5cm" 
+              class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-gray-300 mb-2">Post-Processing Finish</label>
+            <select class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition text-sm">
+              <option value="Raw">Raw Print (Cleaned Support)</option>
+              <option value="Sanded">Sanded Smooth (+₱100)</option>
+              <option value="Painted">Primed & Hand Painted (+₱250)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-gray-300 mb-2">Quantity Needed</label>
+            <input type="number" min="1" value="1" 
+              class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 transition text-sm">
+          </div>
+        </div>
+
+        <!-- Row 4: Contact Info -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-700/50">
+          <div>
+            <label class="block text-sm font-bold text-gray-300 mb-2">Your Name / Student Name *</label>
+            <input type="text" required placeholder="Juan Dela Cruz" 
+              class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-gray-300 mb-2">FB Messenger / Instagram Handle *</label>
+            <input type="text" required placeholder="@yourhandle or FB Profile Link" 
+              class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition text-sm">
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" 
+          class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-black py-4 rounded-xl shadow-lg transition duration-300 text-center uppercase tracking-wide">
+          Submit Custom Print Request
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+</section>
         <!-- ================= TAB 2: INSTANT PRICE CALCULATOR ================= -->
         <section id="tab-calculator" class="tab-content hidden space-y-8">
             <div class="max-w-3xl mx-auto">
