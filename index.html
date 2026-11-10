@@ -458,135 +458,158 @@
             </div>
         </section>
 
-    <!-- ========================================== -->
-<!-- TAB 3: PRE-ORDER & CUSTOM REQUEST FORM     -->
+   <!-- ========================================== -->
+<!-- COMPLETE PRE-ORDER FORM & LOGIC BLOCK      -->
 <!-- ========================================== -->
-<div id="tab3-content" class="tab-content">
-  <section class="py-16 bg-gray-950 border-t border-cyan-500/20">
-    <div class="w-full max-w-3xl mx-auto px-4">
+<section id="pre-order" class="py-16 bg-gray-950 border-t border-cyan-500/20">
+  <div class="w-full max-w-3xl mx-auto px-4">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-black text-white">Pre-Order & Custom Request Form</h2>
+      <p class="text-gray-400 text-sm mt-2">
+        Fill in your specs below to instantly generate a copyable Order Sheet for GCash & Facebook Messenger confirmation.
+      </p>
+    </div>
+
+    <!-- Main Form Enclosure Box -->
+    <div class="bg-gray-900/90 border border-cyan-500/30 rounded-3xl p-6 md:p-8 shadow-2xl backdrop-blur space-y-6">
       
-      <!-- Section Header -->
-      <div class="text-center mb-10">
-        <h2 class="text-3xl font-black text-white">Pre-Order & Custom Request Form</h2>
-        <p class="text-gray-400 text-sm mt-2">
-          Fill in your specs below to instantly generate a copyable Order Sheet for GCash & Facebook Messenger confirmation.
-        </p>
+      <!-- 1. Fulfillment Method Toggle -->
+      <div>
+        <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-3">1. Fulfillment Method *</label>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Campus Pickup Option -->
+          <div id="methodCampus" onclick="setFulfillment('campus')" class="cursor-pointer bg-gray-950 border-2 border-cyan-500 rounded-2xl p-4 text-center transition shadow-lg">
+            <h4 class="font-bold text-white text-sm">In-School Campus Pickup DCHS V.MAPA ONLY</h4>
+            <p class="text-xs text-cyan-400 mt-1">Free meetups at campus spots</p>
+          </div>
+          <!-- Nationwide Shipping Option -->
+          <div id="methodDelivery" onclick="setFulfillment('delivery')" class="cursor-pointer bg-gray-950 border-2 border-gray-800 rounded-2xl p-4 text-center transition opacity-60 hover:opacity-100">
+            <h4 class="font-bold text-white text-sm">Nationwide Shipping</h4>
+            <p class="text-xs text-gray-400 mt-1">Delivered directly to your door</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Main Form Enclosure Box -->
-      <div class="bg-gray-900/90 border border-cyan-500/30 rounded-3xl p-6 md:p-8 shadow-2xl backdrop-blur space-y-6">
-        
-        <!-- 1. Fulfillment Method Toggle -->
+      <!-- Customer Contact Row -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-3">1. Fulfillment Method *</label>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Campus Pickup Option -->
-            <div id="methodCampus" onclick="setFulfillment('campus')" class="cursor-pointer bg-gray-950 border-2 border-cyan-500 rounded-2xl p-4 text-center transition shadow-lg">
-              <h4 class="font-bold text-white text-sm">In-School Campus Pickup DCHS V.MAPA ONLY</h4>
-              <p class="text-xs text-cyan-400 mt-1">Free meetups at campus spots</p>
-            </div>
-            <!-- Nationwide Shipping Option -->
-            <div id="methodDelivery" onclick="setFulfillment('delivery')" class="cursor-pointer bg-gray-950 border-2 border-gray-800 rounded-2xl p-4 text-center transition opacity-60 hover:opacity-100">
-              <h4 class="font-bold text-white text-sm">Nationwide Shipping</h4>
-              <p class="text-xs text-gray-400 mt-1">Delivered directly to your door</p>
-            </div>
-          </div>
+          <label class="block text-xs font-semibold text-gray-300 mb-2">Full Name *</label>
+          <input type="text" id="custName" placeholder="e.g. Juan Dela Cruz" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
         </div>
-
-        <!-- Customer Contact Row -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-2">Full Name *</label>
-            <input type="text" id="custName" placeholder="e.g. Juan Dela Cruz" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-2">Messenger / Instagram / Phone Number *</label>
-            <input type="text" id="custContact" placeholder="@Liam Tan / 0917-xxx-xxxx" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
-          </div>
-        </div>
-
-        <!-- Campus Pickup Details (Shown by default when Campus selected) -->
-        <div id="campusBlock" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">Grade / Year & Section *</label>
-            <input type="text" id="custGrade" placeholder="e.g. Grade 11 STEM - B" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">Campus Pickup Location</label>
-            <select id="pickupLocationSelect" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
-              <option value="Main Gate / Guard House">Main Gate / Guard House</option>
-              <option value="Cafeteria">Cafeteria</option>
-              <option value="Student Quad / Court">Student Quad / Court</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Nationwide Shipping Details (Hidden by default, shown when Delivery selected) -->
-        <div id="shippingAddressBlock" class="hidden">
-          <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">Delivery Address (House/Building #, Street, Barangay, City, Province) *</label>
-          <textarea id="custAddress" rows="3" placeholder="e.g. 123 Sampaguita St., Brgy. Central, Quezon City, Metro Manila" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition"></textarea>
-        </div>
-
-        <!-- Item Selection -->
         <div>
-          <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">SELECT CATALOG ITEM OR CUSTOM QUOTE *</label>
-          <select id="itemSelect" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
-            <option value="custom">-- Custom File / STL Quote Request --</option>
-            <option value="item1">Binary Keychain (₱150)</option>
-            <option value="item2">Phone Stand (₱250)</option>
+          <label class="block text-xs font-semibold text-gray-300 mb-2">Messenger / Instagram / Phone Number *</label>
+          <input type="text" id="custContact" placeholder="@Liam Tan / 0917-xxx-xxxx" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
+        </div>
+      </div>
+
+      <!-- Campus Pickup Details (Shown by default when Campus selected) -->
+      <div id="campusBlock" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">Grade / Year & Section *</label>
+          <input type="text" id="custGrade" placeholder="e.g. Grade 11 STEM - B" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">Campus Pickup Location</label>
+          <select id="pickupLocationSelect" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
+            <option value="Main Gate / Guard House">Main Gate / Guard House</option>
+            <option value="Cafeteria">Cafeteria</option>
+            <option value="Student Quad / Court">Student Quad / Court</option>
           </select>
         </div>
-
-        <!-- Filament Color Choice & Quantity -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-2">Filament Color Choice</label>
-            <select id="filamentColor" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
-              <option value="Matte Black">Matte Black</option>
-              <option value="Cyan Blue">Cyan Blue</option>
-              <option value="Pure White">Pure White</option>
-              <option value="Silver Gray">Silver Gray</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-gray-300 mb-2">Quantity</label>
-            <input type="number" id="itemQty" value="1" min="1" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
-          </div>
-        </div>
-
-        <!-- Custom Engraving Text -->
-        <div>
-          <label class="block text-xs font-semibold text-gray-300 mb-2">Custom Text / Engraving Details (If applicable)</label>
-          <input type="text" id="customText" placeholder="e.g. Keychain text: 'binary - STEM 11'" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
-        </div>
-
-        <!-- STL File Link -->
-        <div>
-          <label class="block text-xs font-semibold text-gray-300 mb-2">Custom STL File Link (Thingiverse / Printables / Google Drive)</label>
-          <input type="text" id="stlLink" placeholder="https://printables.com/model/..." class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
-        </div>
-
-        <!-- Price Box -->
-        <div class="bg-gray-950 border border-gray-800 rounded-2xl p-5 flex items-center justify-between">
-          <div>
-            <span class="text-xs text-gray-400">Total Estimated Amount:</span>
-            <div id="estPriceDisplay" class="text-2xl font-black text-cyan-400 mt-0.5">₱Quote Pending</div>
-          </div>
-          <span class="text-xs text-gray-500">Payable via GCash / Cash on Pickup</span>
-        </div>
-
-        <!-- Submit Button -->
-        <button onclick="generateOrderSheet()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-black py-4 rounded-2xl shadow-lg transition flex items-center justify-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-          Generate Order Sheet
-        </button>
-
       </div>
+
+      <!-- Nationwide Shipping Details (Hidden by default, shown when Delivery selected) -->
+      <div id="shippingAddressBlock" class="hidden">
+        <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">Delivery Address (House/Building #, Street, Barangay, City, Province) *</label>
+        <textarea id="custAddress" rows="3" placeholder="e.g. 123 Sampaguita St., Brgy. Central, Quezon City, Metro Manila" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition"></textarea>
+      </div>
+
+      <!-- Item Selection -->
+      <div>
+        <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">SELECT CATALOG ITEM OR CUSTOM QUOTE *</label>
+        <select id="itemSelect" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
+          <option value="custom">-- Custom File / STL Quote Request --</option>
+          <option value="item1">Binary Keychain (₱150)</option>
+          <option value="item2">Phone Stand (₱250)</option>
+        </select>
+      </div>
+
+      <!-- Filament Color Choice & Quantity -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-2">Filament Color Choice</label>
+          <select id="filamentColor" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
+            <option value="Matte Black">Matte Black</option>
+            <option value="Cyan Blue">Cyan Blue</option>
+            <option value="Pure White">Pure White</option>
+            <option value="Silver Gray">Silver Gray</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-2">Quantity</label>
+          <input type="number" id="itemQty" value="1" min="1" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
+        </div>
+      </div>
+
+      <!-- Custom Engraving Text -->
+      <div>
+        <label class="block text-xs font-semibold text-gray-300 mb-2">Custom Text / Engraving Details (If applicable)</label>
+        <input type="text" id="customText" placeholder="e.g. Keychain text: 'binary - STEM 11'" class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
+      </div>
+
+      <!-- STL File Link -->
+      <div>
+        <label class="block text-xs font-semibold text-gray-300 mb-2">Custom STL File Link (Thingiverse / Printables / Google Drive)</label>
+        <input type="text" id="stlLink" placeholder="https://printables.com/model/..." class="w-full bg-gray-950 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
+      </div>
+
+      <!-- Price Box -->
+      <div class="bg-gray-950 border border-gray-800 rounded-2xl p-5 flex items-center justify-between">
+        <div>
+          <span class="text-xs text-gray-400">Total Estimated Amount:</span>
+          <div id="estPriceDisplay" class="text-2xl font-black text-cyan-400 mt-0.5">₱Quote Pending</div>
+        </div>
+        <span class="text-xs text-gray-500">Payable via GCash / Cash on Pickup</span>
+      </div>
+
+      <!-- Submit Button -->
+      <button onclick="generateOrderSheet()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-black py-4 rounded-2xl shadow-lg transition flex items-center justify-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        Generate Order Sheet
+      </button>
+
     </div>
-  </section>
-</div>
+  </div>
+</section>
+
+<!-- Fulfillment Switcher Script -->
+<script>
+  let currentFulfillment = 'campus';
+
+  function setFulfillment(method) {
+    currentFulfillment = method;
+    const campusCard = document.getElementById('methodCampus');
+    const deliveryCard = document.getElementById('methodDelivery');
+    const campusBlock = document.getElementById('campusBlock');
+    const shippingAddressBlock = document.getElementById('shippingAddressBlock');
+
+    if (method === 'campus') {
+      campusCard.className = "cursor-pointer bg-gray-950 border-2 border-cyan-500 rounded-2xl p-4 text-center transition shadow-lg";
+      deliveryCard.className = "cursor-pointer bg-gray-950 border-2 border-gray-800 rounded-2xl p-4 text-center transition opacity-60 hover:opacity-100";
+      campusBlock.classList.remove('hidden');
+      shippingAddressBlock.classList.add('hidden');
+    } else {
+      deliveryCard.className = "cursor-pointer bg-gray-950 border-2 border-cyan-500 rounded-2xl p-4 text-center transition shadow-lg";
+      campusCard.className = "cursor-pointer bg-gray-950 border-2 border-gray-800 rounded-2xl p-4 text-center transition opacity-60 hover:opacity-100";
+      campusBlock.classList.add('hidden');
+      shippingAddressBlock.classList.remove('hidden');
+    }
+  }
+</script>
 
         <!-- ================= TAB 4: LIVE ORDER STATUS TRACKER ================= -->
         <section id="tab-tracker" class="tab-content hidden space-y-6">
