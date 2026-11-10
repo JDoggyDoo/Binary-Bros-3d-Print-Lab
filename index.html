@@ -509,11 +509,29 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                 </div>
-                                <div>
-                                    <label class="block text-xs font-semibold text-cyan-300 mb-1">Grade / Year & Section *</label>
-                                    <input type="text" id="cust-section" placeholder="e.g. Grade 11 STEM - B" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400">
-                                </div>
-                            </div>
+                                <!-- Row for Grade / Year & Section & Campus Pickup Location -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-gray-950/40 p-5 rounded-2xl border border-gray-800/60">
+  
+  <!-- Grade / Year & Section Field -->
+  <div>
+    <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">Grade / Year & Section *</label>
+    <input type="text" name="grade_section" placeholder="e.g. Grade 11 STEM - B" required
+      class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
+  </div>
+
+  <!-- Campus Pickup Location Field -->
+  <div>
+    <label class="block text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2">Campus Pickup Location</label>
+    <select name="pickup_location" 
+      class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white text-sm focus:border-cyan-500 focus:outline-none transition">
+      <option value="Main Gate / Guard House">Main Gate / Guard House</option>
+      <option value="Cafeteria">Cafeteria</option>
+      <option value="Student Quad / Court">Student Quad / Court</option>
+    </select>
+  </div>
+
+</div>
+                        
                             <div>
                                 <label class="block text-xs font-semibold text-cyan-300 mb-1">Campus Pickup Location</label>
                                 <select id="cust-meetup" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-sm text-white focus:outline-none focus:border-cyan-400">
