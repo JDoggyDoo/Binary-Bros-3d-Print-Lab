@@ -64,7 +64,25 @@
         <h2 class="text-3xl font-black">Featured Print Catalog</h2>
         <p class="text-gray-400 text-sm mt-2">Explore ready-to-print models or submit custom STL files for a quote.</p>
       </div>
+<!-- Notice all 3 items are INSIDE this grid div -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+  
+  <!-- Item 1 -->
+  <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+    <!-- Binary Keychain content -->
+  </div>
 
+  <!-- Item 2 -->
+  <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+    <!-- Desk Phone Stand content -->
+  </div>
+
+  <!-- Item 3 (Move it UP here, BEFORE the closing </div> of the grid!) -->
+  <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+    <!-- Articulated Flexi Dragon content -->
+  </div>
+
+</div> <!-- <-- Make sure this closing grid div comes AFTER Item 3! -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         <!-- Item 1 -->
         <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
